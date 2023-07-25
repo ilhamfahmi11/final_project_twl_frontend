@@ -27,7 +27,7 @@ const Register = () => {
       } else {
         // Send a POST request to the backend to register the user
         const response = await axios.post(
-          "http://localhost:5000/register",
+          "https://final-project-twl-backend-8up8.vercel.app/register",
           formData
         );
         console.log(response.data); // You can handle the response as needed
