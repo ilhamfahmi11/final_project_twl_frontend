@@ -27,7 +27,7 @@ const Login = () => {
       } else {
         // Send a POST request to the backend to log in the user
         const response = await axios.post(
-          "https://final-project-twl-backend-8up8.vercel.app/",
+          "https://final-project-twl-backend-8up8.vercel.app/login",
           formData
         );
         console.log(response.data); // You can handle the response as needed
