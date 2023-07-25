@@ -11,7 +11,7 @@ const AddUser = () => {
   const saveUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://finalproject-api-chi.vercel.app/user/register", {
+      await axios.post("https://final-project-twl-backend-8up8.vercel.app/user/register", {
         name,
         email,
         gender,
