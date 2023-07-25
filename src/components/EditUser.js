@@ -28,15 +28,77 @@ const EditUser = () => {
         email,
         gender,
       });
-      navigate("/");
+      navigate("/list");
     } catch (error) {
       console.log(error);
     }
   };
 
+  const handleCancel = () => {
+    navigate(-1); // Go back to the previous page
+  };
+
+  const styles = {
+    container: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      minHeight: "100vh",
+    },
+    form: {
+      backgroundColor: "#f5f5f5", // Light gray background color
+      padding: "20px",
+      borderRadius: "8px",
+      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+      width: "100%", // Set the form width to 100%
+      maxWidth: "400px",
+    },
+    input: {
+      width: "100%",
+      padding: "10px",
+      marginBottom: "15px",
+      borderRadius: "4px",
+      border: "1px solid #ccc",
+      fontSize: "16px",
+    },
+    select: {
+      width: "100%",
+      padding: "10px",
+      marginBottom: "15px",
+      borderRadius: "4px",
+      border: "1px solid #ccc",
+      fontSize: "16px",
+      backgroundColor: "#fff",
+    },
+    buttonContainer: {
+      display: "flex",
+      justifyContent: "space-between",
+      marginTop: "20px", // Add space between form fields and buttons
+    },
+    cancelButton: {
+      flex: 1, // Let the button grow to fill the available space
+      marginRight: "10px",
+      backgroundColor: "#f44336", // Red cancel button color
+      color: "#fff",
+    },
+    updateButton: {
+      flex: 1, // Let the button grow to fill the available space
+      backgroundColor: "#4caf50", // Green update button color
+      color: "#fff",
+    },
+    editUserHeading: {
+      textAlign: "center",
+      marginBottom: "20px",
+      textTransform: "uppercase", // Convert text to uppercase
+      fontWeight: "bold", // Set font weight to bold
+      fontSize: "24px", // Set font size to 24px
+    },
+  };
+
   return (
-    <div className="columns mt-5">
-      <div className="column is-half">
+    <div style={styles.container}>
+      <div style={styles.form}>
+        <h2 style={styles.editUserHeading}>Edit User</h2>
         <form onSubmit={updateUser}>
           <div className="field">
             <label className="label">Name</label>
@@ -47,6 +109,7 @@ const EditUser = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Name"
+                style={styles.input}
               />
             </div>
           </div>
@@ -59,13 +122,14 @@ const EditUser = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
+                style={styles.input}
               />
             </div>
           </div>
           <div className="field">
             <label className="label">Gender</label>
             <div className="control">
-              <div className="select is-fullwidth">
+              <div className="select is-fullwidth" style={styles.select}>
                 <select
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
@@ -76,12 +140,18 @@ const EditUser = () => {
               </div>
             </div>
           </div>
-          <div className="field">
-            <div className="control">
-              <button type="submit" className="button is-success">
-                Update
-              </button>
-            </div>
+          <div style={styles.buttonContainer}>
+            <button
+              type="button"
+              className="button"
+              style={styles.cancelButton}
+              onClick={handleCancel}
+            >
+              Back
+            </button>
+            <button type="submit" className="button" style={styles.updateButton}>
+              Update
+            </button>
           </div>
         </form>
       </div>
